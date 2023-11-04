@@ -32,8 +32,7 @@ function draw() {
     beginShape();
     let index = floor(map(i, 0, 360, 0, wave.length))
     for (var j = 0; j < 360; j += 10) {
-      //var rad = i * 8;
-      var rad  = map(wave[index], 0, 0.1, 300, 800)
+      var rad  = map(wave[index], 0, 0.1, 250, 500)
       var x = rad * cos(j);
       var y = rad * sin(j);
       var z = sin(frameCount + i * 10) *10
@@ -42,7 +41,7 @@ function draw() {
       if (d <= 250) {
         interpColor = lerpColor(color(196, 99, 85), color(189,120,51), map(d, 0, 250, 0, 1));
       } else {
-        interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, 98.1, 250.1, 0, 1));
+        interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, 250.1, 500, 0, 1));
       }
       stroke(interpColor);
       strokeWeight(2)
@@ -57,15 +56,15 @@ function draw() {
   for (var i = 0; i < 100; i++) {
     beginShape();
     for (var j = 0; j < 360; j += 10) {
-      var rad = i * 8;
+      var rad = i * 5;
       var x = rad * cos(j);
       var y = rad * sin(j);
       var d = dist(0, 0, x, y);
       var interpColor;
-      if (d <= 66.66) {
-        interpColor = lerpColor(color(196, 99, 85), color(220, 147, 47), map(d, 0, 66.66, 0, 1));
+      if (d <= 200) {
+        interpColor = lerpColor(color(196, 99, 85), color(220, 147, 47), map(d, 0, 200, 0, 1));
       } else {
-        interpColor = lerpColor(color(220, 147, 47), color(69,106,162), map(d, 66.67, 200, 0, 1));
+        interpColor = lerpColor(color(220, 147, 47), color(69,106,162), map(d, 200.1, 500, 0, 1));
       }
       stroke(interpColor);
       strokeWeight(2)
