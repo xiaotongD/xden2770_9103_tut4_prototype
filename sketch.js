@@ -77,10 +77,12 @@ function draw() {
   function mousePressed(){
   if (mouseY < height / 2) {
     sky.play();
+    sky.loop();
     Background.stop();
     river.stop();
   } else {
     river.play()
+    river.loop();
     Background.stop();
     sky.stop();
  }
