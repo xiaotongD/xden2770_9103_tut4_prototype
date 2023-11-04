@@ -1,3 +1,4 @@
+let fft;
 let Background;
 let river;
 let sky;
@@ -30,6 +31,7 @@ function draw() {
       var rad = i * 8;
       var x = rad * cos(j);
       var y = rad * sin(j);
+      var z = sin(frameCount + i * 10) *10
       var d = dist(0, 0, x, y);
       var interpColor;
       if (d <= 98) {
@@ -39,7 +41,7 @@ function draw() {
       }
       stroke(interpColor);
       strokeWeight(2)
-      vertex(x, y);
+      vertex(x, y, z);
       noFill();
     }
     endShape(CLOSE);
