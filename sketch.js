@@ -11,8 +11,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400, WEBGL);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   angleMode(DEGREES);
+  fft = new p5.FFT();
+  river.connect(fft);
   Background.setVolume(0.5); 
   river.setVolume(0.5); 
   sky.setVolume(0.5); 
@@ -23,21 +25,24 @@ function setup() {
 function draw() {
   background(30);
   rotateX(85);
+  let wave = fft.waveform();
 
   translate(0, 0, -40);
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 300; i++) {
     beginShape();
+    let index = floor(map(i, 0, 360, 0, wave.length))
     for (var j = 0; j < 360; j += 10) {
-      var rad = i * 8;
+      //var rad = i * 8;
+      var rad  = map(wave[index], 0, 0.1, 300, 800)
       var x = rad * cos(j);
       var y = rad * sin(j);
       var z = sin(frameCount + i * 10) *10
       var d = dist(0, 0, x, y);
       var interpColor;
-      if (d <= 98) {
-        interpColor = lerpColor(color(196, 99, 85), color(189,120,51), map(d, 0, 98, 0, 1));
+      if (d <= 250) {
+        interpColor = lerpColor(color(196, 99, 85), color(189,120,51), map(d, 0, 250, 0, 1));
       } else {
-        interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, 98.1, 200, 0, 1));
+        interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, 98.1, 250.1, 0, 1));
       }
       stroke(interpColor);
       strokeWeight(2)
