@@ -1,6 +1,7 @@
 let fft;
 let Background;
 let backgroundSound;
+let color1, color2, color3;
 
 function preload() {
   Background = loadSound('audios/Background.wav');
@@ -14,6 +15,10 @@ function setup() {
   Background.setVolume(0.5); 
   backgroundSound = Background 
   backgroundSound.loop();
+
+  color1 = color(32, 55, 69); 
+  color2 = color(102, 43, 59); 
+  color3 = color(50,30,40);
 }
 
 function draw() {
@@ -67,6 +72,39 @@ function draw() {
     }
     endShape(CLOSE);
   }
+
+
+  fill(120, 75, 50);
+  
+  beginShape();
+  for (let y = -130; y <= 75; y += 10) {
+    let lerpedColor;
+    if (y < -30) {
+      lerpedColor = lerpColor(color1, color2, map(y, -130, -30, 0, 1));
+    } else {
+      lerpedColor = lerpColor(color2, color3, map(y, -30, 75, 0, 1));
+    }
+    fill(lerpedColor);
+    vertex(-260, 75, -130);
+    vertex(-10, 75, -130);
+    vertex(-15, 75, -100);
+    vertex(-30, 75, -80);
+    vertex(-60, 75, -80);
+    vertex(-70, 75, -65);
+    vertex(-85, 75, -50);
+    vertex(-100, 75, -50);
+    vertex(-105, 75, -10);
+    vertex(-130, 75, 0);
+    vertex(-140, 75, -10);
+    vertex(-140, 75, 50);
+    vertex(-150, 75, 70);
+    vertex(-165, 75, 50);
+    vertex(-170, 75, -10);
+    vertex(-200, 75, -50);
+    vertex(-250, 75, -80);
+    noStroke();
+}
+endShape(CLOSE);
 }
 
 function windowResized(){
