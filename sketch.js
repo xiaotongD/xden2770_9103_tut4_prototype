@@ -81,34 +81,34 @@ function drawTower() {
   fill(120, 75, 50);
   push();
   translate(-60, 200, -22);
-  scale(0.3);
+  scale(0.4);
 
   beginShape();
-  for (let y = -130; y <= 75; y += 10) {
+  for (let y = -windowHeight/3.5; y <= windowHeight/3.5; y += windowHeight/45.5) {
     let lerpedColor;
-    if (y < -30) {
-      lerpedColor = lerpColor(color1, color2, map(y, -130, -30, 0, 1));
+    if (y < -windowHeight/15.167) {
+      lerpedColor = lerpColor(color1, color2, map(y, -windowHeight/3.5, -windowHeight/15.167, 0, 1));
     } else {
-      lerpedColor = lerpColor(color2, color3, map(y, -30, 75, 0, 1));
+      lerpedColor = lerpColor(color2, color3, map(y, -windowHeight/15.167, windowHeight/6.067, 0, 1));
     }
     fill(lerpedColor);
-    vertex(-260, 75, -130);
-    vertex(-10, 75, -130);
-    vertex(-15, 75, -100);
-    vertex(-30, 75, -80);
-    vertex(-60, 75, -80);
-    vertex(-70, 75, -65);
-    vertex(-85, 75, -50);
-    vertex(-100, 75, -50);
-    vertex(-105, 75, -10);
-    vertex(-130, 75, 0);
-    vertex(-140, 75, -10);
-    vertex(-140, 75, 50);
-    vertex(-150, 75, 70);
-    vertex(-165, 75, 50);
-    vertex(-170, 75, -10);
-    vertex(-200, 75, -50);
-    vertex(-250, 75, -80);
+    vertex(-windowHeight/1.75, windowHeight/6.067, -windowHeight/3.5);
+    vertex(-windowHeight/45.5, windowHeight/6.067, -windowHeight/3.5);
+    vertex(-windowHeight/30.3, windowHeight/6.067, -windowHeight/4.55);
+    vertex(-windowHeight/15.167, windowHeight/6.067, -windowHeight/5.6875);
+    vertex(-windowHeight/7.58, windowHeight/6.067, -windowHeight/5.6875);
+    vertex(-windowHeight/6.5, windowHeight/6.067, -windowHeight/7);
+    vertex(-windowHeight/5.35, windowHeight/6.067, -windowHeight/9.1);
+    vertex(-windowHeight/4.55, windowHeight/6.067, -windowHeight/9.1);
+    vertex(-windowHeight/4.33, windowHeight/6.067, -windowHeight/45.5);
+    vertex(-windowHeight/3.5, windowHeight/6.067, 0);
+    vertex(-windowHeight/3.25, windowHeight/6.067, -windowHeight/45.5);
+    vertex(-windowHeight/3.25, windowHeight/6.067, windowHeight/9.1);
+    vertex(-windowHeight/3.033, windowHeight/6.067, windowHeight/6.5);
+    vertex(-windowHeight/2.758, windowHeight/6.067, windowHeight/9.1);
+    vertex(-windowHeight/2.676, windowHeight/6.067, -windowHeight/45.5);
+    vertex(-windowHeight/2.275, windowHeight/6.067, -windowHeight/9.1);
+    vertex(-windowHeight/1.82, windowHeight/6.067, -windowHeight/5.6875);
     noStroke();
   }
   endShape(CLOSE);
