@@ -73,9 +73,16 @@ function draw() {
     endShape(CLOSE);
   }
 
+  drawTower();
 
+}
+
+function drawTower() {
   fill(120, 75, 50);
-  
+  push();
+  translate(-60, 200, -22);
+  scale(0.3);
+
   beginShape();
   for (let y = -130; y <= 75; y += 10) {
     let lerpedColor;
@@ -103,8 +110,9 @@ function draw() {
     vertex(-200, 75, -50);
     vertex(-250, 75, -80);
     noStroke();
-}
-endShape(CLOSE);
+  }
+  endShape(CLOSE);
+  pop();
 }
 
 function windowResized(){
