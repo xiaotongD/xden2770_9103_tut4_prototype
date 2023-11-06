@@ -1,23 +1,17 @@
 let fft;
 let Background;
-let river;
-let sky;
 let backgroundSound;
 
 function preload() {
   Background = loadSound('audios/Background.wav');
-  river = loadSound('audios/River.wav'); 
-  sky = loadSound('audios/Sky.wav'); 
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   angleMode(DEGREES);
   fft = new p5.FFT();
-  river.connect(fft);
+  Background.connect(fft);
   Background.setVolume(0.5); 
-  river.setVolume(0.5); 
-  sky.setVolume(0.5); 
   backgroundSound = Background 
   backgroundSound.loop();
 }
@@ -73,19 +67,6 @@ function draw() {
     }
     endShape(CLOSE);
   }
-}
-  function mousePressed(){
-  if (mouseY < height / 2) {
-    sky.play();
-    sky.loop();
-    Background.stop();
-    river.stop();
-  } else {
-    river.play()
-    river.loop();
-    Background.stop();
-    sky.stop();
- }
 }
 
 function windowResized(){
